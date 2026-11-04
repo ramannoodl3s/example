@@ -1,0 +1,10 @@
+{% if not ok %}
+<span id="ollama-status" class="px-2 py-1 rounded bg-red-100 text-red-800">Ollama: offline</span>
+{% elif llm_available and embed_available %}
+<span id="ollama-status" class="px-2 py-1 rounded bg-green-100 text-green-800">Ollama: ready ({{ llm_model }})</span>
+{% else %}
+<span id="ollama-status" class="px-2 py-1 rounded bg-amber-100 text-amber-800">
+    Ollama: online — missing {{ missing|join(", ") }}
+    <code class="block text-xs mt-1">ollama pull {{ missing|join(" && ollama pull ") }}</code>
+</span>
+{% endif %}

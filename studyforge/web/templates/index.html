@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+<h1 class="text-3xl font-bold mb-4">StudyForge</h1>
+
+<div hx-get="/health/ollama" hx-trigger="load" hx-swap="outerHTML">
+    <span id="ollama-status" class="px-2 py-1 rounded bg-gray-200">Checking Ollama…</span>
+</div>
+
+<form class="mt-6" onsubmit="return false;">
+    <label for="topic" class="block text-sm font-medium mb-1">What do you want to study?</label>
+    <input id="topic" name="topic" type="text" placeholder="e.g. AWS Certified AI Practitioner"
+           class="w-full border rounded p-2" disabled>
+    <p class="text-sm text-gray-500 mt-1">Topic search arrives in Phase 1.</p>
+</form>
+{% endblock %}
